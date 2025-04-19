@@ -10,6 +10,12 @@ function Book(id, title, desc, status) {
   this.status = status;
 }
 
+Book.prototype.changeStatus = function(){
+    if (this.status == "new") this.status = "not new";
+    else this.status = "new";
+    showBook();
+}
+
 function addBookToLibrary(title, desc, status) {
   let uniqueId = "id" + crypto.randomUUID();
   let book = new Book(uniqueId, title, desc, status);
@@ -43,6 +49,7 @@ addBookToLibrary(
 function showBook() {
   let index = 0;
   const cardContainer = document.querySelector(".cardContainer");
+  cardContainer.innerHTML = '';
   for (const obj of myLibrary) {
     // Only show if the book's not alr there.
     if (!cardContainer.contains(document.querySelector("#" + obj.id))){
@@ -65,12 +72,20 @@ function showBook() {
         }
         card.id = obj.id;
 
-        removeBtn.addEventListener("click", ()=>document.querySelector("#" + obj.id).remove())
+        removeBtn.addEventListener("click", ()=>removeBook(obj.id));
+        card.addEventListener("click", ()=>obj.changeStatus());
 
         card.append(title, desc, status, removeBtn);
         cardContainer.appendChild(card);
     }
   }
+}
+
+function removeBook(id){
+    myLibrary.filter((obj, index) =>{
+        if(obj.id === id) myLibrary.splice(index, 1);
+    });
+    showBook();
 }
 
 showBook();
