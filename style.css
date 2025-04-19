@@ -1,3 +1,4 @@
+/* resets */
 :root{
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
@@ -8,10 +9,19 @@
     box-sizing: border-box;
 }
 
+textarea{
+    resize: none;
+}
+
+input, select{
+    padding: 5px;
+}
+
+/* page styling */
 .container{
     max-width: 100vw;
     min-height: 100vh;
-    background: azure;
+    background: lightblue;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -23,12 +33,38 @@
     font-size: 2rem;
 }
 
-.bookContainer{
-    background-color: rgba(0, 0, 0, 0.3);
+.newBookBtn,
+.addBookBtn{
+    padding: 5px 10px;
+    margin: 0 0 20px 0;
+    background: green;
+    color: white;
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.removeBtn{
+    color: white;
+    background: red;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* cards */
+
+.cardContainer{
+    background-color: rgba(255, 255, 255, 0.4);
     width: 85%;
-    min-height: 85vh;
     border-radius: 10px;
-    padding: 20px;
+    margin-bottom: 50px;
+    padding: 25px;
     display: flex;
     flex-wrap: wrap;
     align-items: start;
@@ -38,10 +74,15 @@
 
 .card{
     background-color: azure;
-    width: 20%;
+    max-width: 20%;
+    min-width: 200px;
     height: 350px;
     border-radius: 10px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: black  0 5px 5px -5px;
 }
 
 .cardTitle{
@@ -50,12 +91,31 @@
 }
 
 .cardDesc{
-    margin: 15px 0 35px 0;
-    max-height: 250px;
+    flex: 1;
     overflow: auto;
 }
 
 .cardStatus{
     color: green;
     font-weight: 600;
+}
+
+/* Dialog */
+.dialog{
+    position: fixed;
+    top: 20px;
+    margin: 100px auto;
+    border-radius: 10px;
+}
+
+.dialogForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 20px;
+}
+
+.dialogForm > *{
+    display: flex;
+    flex-direction: column;
 }

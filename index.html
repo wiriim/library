@@ -10,10 +10,33 @@
 <body>
     <div class="container">
         <div class="hero">Library</div>
-
-        <div class="bookContainer">
+        <button class="newBookBtn">New Book</button>
+        <div class="cardContainer">
             
         </div>
+
+        <dialog class="dialog">
+            <form class="dialogForm" action="#">
+                <p>
+                    <label for="title">Book Title</label>
+                    <input type="text" name="title" id="title">
+                </p>
+                <p>
+                    <label for="desc">Book Desc</label>
+                    <textarea name="desc" id="desc"></textarea>
+                </p>
+                <p>
+                    <label for="status">Book status</label>
+                    <select name="status" id="status">
+                        <option value="new">new</option>
+                        <option value="not new">not new</option>
+                    </select>
+                </p>
+                <p>
+                    <button type="submit" class="addBookBtn" formmethod="dialog">Add</button>
+                </p>
+            </form>
+        </dialog>
     </div>
 </body>
 </html>
